@@ -30,27 +30,21 @@ app.use("/", (req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("API is Running...");
-});
-
 //routes
 app.use("/api/movies", moviesRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
+const __dirname = path.resolve();
 
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
+app.use(express.static(path.join(__dirname, "/frontend/build")));
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  );
-} else {
-  const __dirname = path.resolve();
-  app.get("/", (req, res) => {
-    res.send("API is running....");
-  });
-}
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+);
+
+// const __dirname = path.resolve();
+// app.get("/", (req, res) => {
+//   res.send("API is running....");
+// });
 
 //Error Handler Middleware
 app.use(notFound);
