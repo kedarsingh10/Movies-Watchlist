@@ -72,8 +72,8 @@ const UpdateScreen = () => {
         review,
       }).unwrap(); // NOTE: we need to unwrap the Promise to catch any rejection in our catch block
       toast.success("Movie Added Successfully");
-      refetch();
       navigate(`/movie/${response._id}`);
+      return;
     } catch (addMovieError) {
       toast.error(addMovieError?.data?.message || addMovieError.error);
     }
