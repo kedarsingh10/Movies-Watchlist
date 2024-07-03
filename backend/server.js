@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import moviesRoutes from "./routes/moviesRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
+import path from "path";
 
 const port = process.env.PORT || 5000;
 
@@ -35,6 +36,21 @@ app.get("/", (req, res) => {
 
 //routes
 app.use("/api/movies", moviesRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  const __dirname = path.resolve();
+
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
+  );
+} else {
+  const __dirname = path.resolve();
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 //Error Handler Middleware
 app.use(notFound);
