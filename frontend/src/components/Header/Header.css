@@ -1,0 +1,5 @@
+.header-title {
+  background-image: linear-gradient(to right, #ffc107, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

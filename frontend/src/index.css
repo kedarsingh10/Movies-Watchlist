@@ -1,0 +1,85 @@
+/* Remove borders from buttons, dialogs, form-related elements, and images */
+* {
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set root font size to 62.5% to make 1rem equal to 10px */
+html {
+  font-size: 62.5%; /* (62.5/100) * 16px = 10px */
+  -webkit-text-size-adjust: none; /* for iOS Safari */
+  text-size-adjust: none; /* for other mobile browsers */
+}
+
+.text-size {
+  font-size: 1.3rem;
+}
+
+body,
+html {
+  min-height: 100vh;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+}
+
+/* Smooth scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Remove padding from lists */
+menu,
+ol,
+ul {
+  padding-left: 0;
+}
+
+/* Switch list markers to inside */
+article ol,
+article ul {
+  list-style-position: inside;
+}
+
+/* remove link underlines */
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Fix image display and max width */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove list markers from menus, ordered lists, and unordered lists */
+menu:not(article menu),
+ol:not(article ol),
+ul:not(article ul) {
+  list-style: none;
+}
+
+/* Remove outline for mouse users but keep it for keyboard users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.navbar-brand-large {
+  font-size: 3rem;
+}
+
+.button-size {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}

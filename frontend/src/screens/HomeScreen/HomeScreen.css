@@ -1,0 +1,8 @@
+.Teal-Blue-Gradient {
+  background-image: linear-gradient(to right, #6c5ce7, #4567b7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  display: flex;
+  align-items: center;
+}
